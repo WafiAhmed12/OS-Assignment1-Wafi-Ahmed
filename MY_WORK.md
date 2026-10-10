@@ -129,68 +129,71 @@
 
 ## Your Development Log
 
-### Entry 1 - [Date and Time]
-**What I did**:
+### Entry 1 - [October 7, 2026, 7 AM]
+**What I did**: Forked the repository and set up my student ID
 
-**Details**:
+**Details**: Create a github account with my Universty Email
+            forked the base from the starter repository and renamed it
+            change the ID on line 150 to my ID (445050266)
+            comitted it and push to github
 
-**Challenges**:
+**Challenges**: had to install some extensions that I havent install
 
-**Solution**:
+**Solution**: I just looked for it and install it
 
-**Time spent**:
-
----
-
-### Entry 2 - [Date and Time]
-**What I did**:
-
-**Details**:
-
-**Challenges**:
-
-**Solution**:
-
-**Time spent**:
+**Time spent**: 20 minutes
 
 ---
 
-### Entry 3 - [Date and Time]
-**What I did**:
+### Entry 2 - [October 10, 2026, 1:30 PM]
+**What I did**: I added the first feature to the code, which is the priority feature.
 
-**Details**:
+**Details**: I added a display for the priority number for each process.
 
-**Challenges**:
+**Challenges**: The main challenge was adding a random priority from 1 to 10 without changing the original FIFO scheduling behavior.
 
-**Solution**:
+**Solution**: I solved this by generating a random priority between 1 and 10 for each process and displaying it when the process entered the ready queue, while keeping the FIFO scheduling behavior.
 
-**Time spent**:
-
----
-
-### Entry 4 - [Date and Time]
-**What I did**:
-
-**Details**:
-
-**Challenges**:
-
-**Solution**:
-
-**Time spent**:
+**Time spent**: 1 hour
 
 ---
 
-### Entry 5 - [Date and Time]
-**What I did**:
+### Entry 3 - [October 10, 2026, 2:40 PM]
+**What I did**: I added the second feature to the code, which is the context switch counter.
 
-**Details**:
+**Details**: I added a counter to track how many times currentThread.start() is called.
 
-**Challenges**:
+**Challenges**: The challenge was knowing where to increase the counter to get the correct number of context switches.
 
-**Solution**:
+**Solution**: I solved this by adding a counter and increasing it every process switch, then printing the final count.
 
-**Time spent**:
+**Time spent**: 1 hour and 10 minutes
+
+---
+
+### Entry 4 - [October 10, 2026, 4:10 PM]
+**What I did**: I add a tracker for process waiting time and turnaround time.
+
+**Details**: I added a way to calculate the waiting time for each process. The program tracks how long a process waits in the ready queue and adds the waiting periods together if the process returns to the queue. I also included the execution time, waiting time, and turnaround time in the final output.
+
+**Challenges**: The challenge was calculating these values correctly.
+
+**Solution**: I solved this by tracking when each process entered and left the ready queue and adding up its waiting periods to calculate the total waiting time.
+
+**Time spent**: 1 hour and 30 minutes
+
+---
+
+### Entry 5 - [October 10, 2026, 4:30]
+**What I did**: I tested the whole code after the three features was added.
+
+**Details**: the purpose of this to see the final output and if it is correct or not.
+
+**Challenges**: no challenges.
+
+**Solution**: no solutions.
+
+**Time spent**: 5 minutes
 
 ---
 
@@ -211,13 +214,13 @@
 
 > 💡 **TIP:** Fill this in **last**, after all entries are written.
 
-**Total time spent on assignment**: [X hours]
+**Total time spent on assignment**: 5 hours in total.
 
-**Most challenging part**:
+**Most challenging part**: The third feature implementation.
 
-**Most interesting learning**:
+**Most interesting learning**: actually the whole code but the first feature specifically.
 
-**What I would do differently next time**:
+**What I would do differently next time**: maybe incearesing the process limit or the time quantum next time.
 
 ---
 
@@ -237,7 +240,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+In this assignment, I learned how multithreading works in Java and how to create and start threads using "Thread.start()". I also learned how "Thread.join()" and "Thread.sleep()" work. Adding random priorities helped me understand how to add new features without changing the FIFO scheduling. I also learned how to count context switches and calculate the waiting time for each process. The hardest part was making sure the calculations were correct. Overall, this assignment helped me understand multithreading and CPU scheduling better.
 
 ## Question 2: What was the most challenging part of this assignment?
 
@@ -245,7 +248,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+The most challenging part of this assignment was calculating the waiting time for each process. It was difficult because a process could return to the ready queue more than once. I had to understand how to track the waiting time for each process correctly. I solved this by keeping track of when a process entered and left the queue. I also tested the output to check if the calculations were correct. This helped me understand how waiting time works in CPU scheduling.
 
 ## Question 3: How did you overcome the challenges you faced?
 
@@ -253,7 +256,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+I overcame the challenges by reading the code carefully and understanding how each part worked. I made small changes to the code and tested the program after each change. I used "System.out.println()" to check the values and find mistakes. When I had problems, I reviewed the assignment instructions and checked the output. I also asked for help when I could not understand some parts. This approach helped me fix errors and complete the features successfully.
 
 ## Question 4: How can you apply multithreading concepts in real-world applications?
 
@@ -261,7 +264,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+Multithreading is used in many applications, like games, browsers, and music players. For example, a game can run in the background while handling player controls and sounds at the same time. A music player can play music while I search for another song. In this assignment, I learned how threads can work at the same time and how tasks wait in a queue. This can help me in the future when I build applications that need to do more than one thing at a time.
 
 ### Optional: What would you like to learn more about?
 
@@ -293,7 +296,7 @@
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
+A process is a program with its own memory, while threads share memory within the same program. Threads are easier and faster to create than separate processes. In our code, the "Process" class represents a simulated process, and "new Thread(process)" in "addProcessToQueue()" creates a real Java thread to run it. We used threads because they make it easier to simulate multiple processes running concurrently.
 
 ## Question 2: Ready Queue Behavior
 
@@ -305,15 +308,21 @@
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
+In Round-Robin scheduling, if a process does not finish during its time quantum, it goes back to the ready queue. In my output, P5 went back to the queue once because its burst time was 5818ms and the time quantum was 3000ms. After running for 3000ms, it still had 2818ms left, so it had to wait for another turn. This is important because every process gets a chance to use the CPU instead of one process taking all the time.
 
 Example from my output:
 ```
-[Paste a relevant snippet from your program output here showing a process being re-queued]
+Example from my output:
+```text
+P5 executing quantum [3000ms]
+P5 completed quantum 3000ms
+Remaining time: 2818ms
+P5 yields CPU for context switch
+P5 added to ready queue | Burst time: 5818ms | Priority: 6
 ```
 
 **Explanation of example:**
-[Explain what is happening in the output snippet you pasted.]
+P5 ran for 3000ms but did not finish because it still had 2818ms remaining. It gave up the CPU and went back to the ready queue to wait for its next turn. When it ran again, it used the remaining time and finished. This shows how Round-Robin gives each process a chance to use the CPU.
 
 ## Question 3: Thread Lifecycle
 
@@ -323,15 +332,15 @@ Example from my output:
 
 **Your Answer:** *(3-5 sentences overall; one short explanation per state)*
 
-1. **New**: [When is P1 in the New state?]
+1. **New**: P1 is in the New state when new Thread(process) creates its thread in addProcessToQueue().
 
-2. **Runnable**: [When does P1 become Runnable?]
+2. **Runnable**: P1 becomes Runnable when the scheduler calls Thread.start() to start the thread.
 
-3. **Running**: [When is P1 Running?]
+3. **Running**: P1 is Running when it executes its run() method and simulates its CPU time
 
-4. **Waiting**: [When and why would a thread be Waiting?]
+4. **Waiting**: P1's thread can enter the Timed Waiting state when Thread.sleep() is called. The main thread can enter the Waiting state when it calls Thread.join() to wait for another thread to finish.
 
-5. **Terminated**: [When is P1 Terminated?]
+5. **Terminated**: P1 reaches the Terminated state when its run() method finishes executing.
 
 ## Question 4: Real-World Applications
 
@@ -341,32 +350,33 @@ Example from my output:
 
 **Your Answer:** *(3-5 sentences per example)*
 
-### Example 1 (operating-system level): [Name of scenario]
+### Example 1 (operating-system level): [CPU Scheduling]
 
 **Description**:
-[Describe the real-world scenario.]
+An operating system can use Round-Robin to give different processes a chance to use the CPU. Each process gets a specific time, and if it does not finish, it goes back to the queue. The CPU then moves to the next process.
 
 **Why Round-Robin works well here**:
-[Fairness, responsiveness, predictability?]
+It is fair because every process gets a turn. It also stops one process from using the CPU for too long.
 
-### Example 2: [Name of application/scenario]
+### Example 2: [Online Multiplayer Game]
 
 **Description**:
-[Describe the real-world scenario or application.]
+A multiplayer game has different tasks, like player controls, sounds, and network communication. Threads can handle these tasks, and Round-Robin can give each task a short time to run, like in our assignment.
+
 
 **Why Round-Robin works well here**:
-[Fairness, responsiveness, predictability?]
+It helps share CPU time between tasks and keeps the game responsive. This makes it less likely that one task will block the others for too long.
 
 ## Summary
 
 **Key concepts I understood through these questions:**
-1.
-2.
-3.
+1.How threads work
+2.How Round-Robin scheduling works
+3.How to calculate waiting time
 
 **Concepts I need to study more:**
-1.
-2.
+1.Thread lifecycle
+2.Context switching
 
 ---
 
