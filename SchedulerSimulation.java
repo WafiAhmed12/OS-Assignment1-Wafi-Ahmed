@@ -151,6 +151,10 @@ class Process implements Runnable {
 public class SchedulerSimulation {
 
     static int contextSwitchCount = 0; // feature 2: context switch counter
+    
+    public static Map<String, Long> queueEntryTimes = new HashMap<>(); // Feature 3
+    public static Map<String, Long> waitingTimes = new HashMap<>(); // Feature 3
+
     public static void main(String[] args) {
         // ⚠️ IMPORTANT: Put your student ID here to seed the random number generator
         // This makes your output unique to you - DO NOT forget to change this!
@@ -228,6 +232,14 @@ public class SchedulerSimulation {
         while (!processQueue.isEmpty()) {
             // Get the next thread from the queue (FIFO)
             Thread currentThread = processQueue.poll(); // Dequeues the next thread
+
+            // Feature 3
+            Process waitingProcess = processMap.get(currentThread);
+            long currentQueueTime = System.currentTimeMillis();
+            long queueWait = currentQueueTime - queueEntryTimes.get(waitingProcess.getName());
+            waitingTimes.put(waitingProcess.getName(),
+            waitingTimes.getOrDefault(waitingProcess.getName(), 0L) + queueWait);
+            // Feature 3
             
             // Print the current process queue (list of process IDs in the queue)
             System.out.println(Colors.BOLD + Colors.MAGENTA + "┌─ Ready Queue " + "─".repeat(65) + Colors.RESET);
@@ -285,6 +297,32 @@ public class SchedulerSimulation {
                           "                     ✓  ALL PROCESSES COMPLETED  ✓                            " + 
                           Colors.RESET + Colors.BOLD + Colors.BRIGHT_GREEN + "║" + Colors.RESET);
                           System.out.println("Total Context Switches: " + contextSwitchCount);
+                          System.out.println("\nProcess Name\tBurst Time\tWaiting Time\tTurnaround Time");
+            // Feature 3
+            for (int i = 1; i <= numProcesses; i++) {
+                         Process finalProcess = null;
+
+                for (Process candidate : processMap.values()) {
+                        if (candidate.getName().equals("P" + i)) {
+                        finalProcess = candidate;
+                        break;
+                     }
+              }
+
+            long finalWaitingTime =
+                    waitingTimes.getOrDefault(finalProcess.getName(), 0L);
+
+            long turnaroundTime =
+                    finalWaitingTime + finalProcess.getBurstTime();
+
+            System.out.println(
+                    finalProcess.getName() + "\t\t" +
+                    finalProcess.getBurstTime() + "ms\t\t" +
+                    finalWaitingTime + "ms\t\t" +
+                    turnaroundTime + "ms"
+                );
+            }
+            // Feature 3
         System.out.println(Colors.BOLD + Colors.BRIGHT_GREEN + 
                           "╚════════════════════════════════════════════════════════════════════════════════╝" + 
                           Colors.RESET + "\n");
@@ -301,6 +339,8 @@ public class SchedulerSimulation {
         
         // Map the thread to the process, so we can track the process associated with each thread
         processMap.put(thread, process);
+
+        queueEntryTimes.put(process.getName(), System.currentTimeMillis()); //Feature 3
         
         // Print a message indicating the process has entered the ready queue
         System.out.println(Colors.BLUE + "  ➕ " + Colors.BOLD + Colors.CYAN + process.getName() +
