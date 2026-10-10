@@ -29,7 +29,7 @@ class Process implements Runnable {
     private int burstTime; // Total time the process requires to complete (in milliseconds)
     private int timeQuantum; // Time slice (time quantum) allowed per CPU access (in milliseconds)
     private int remainingTime; // Time left for the process to finish its execution
-
+    private int priority; // Feature 1
     // Constructor to initialize the process with name, burst time, and time quantum
     public Process(String name, int burstTime, int timeQuantum) {
         this.name = name;
@@ -133,10 +133,15 @@ class Process implements Runnable {
         return burstTime;
     }
 
-    public int getRemainingTime() {
+    public int getRemainingTime() { 
         return remainingTime;
     }
-
+    public int getPriority() { // Feature 1
+    return priority;
+}
+    public void setPriority(int priority) { // Feature 1
+    this.priority = priority;
+}
     // Check if the process has finished (i.e., no remaining time)
     public boolean isFinished() {
         return remainingTime <= 0;
@@ -199,6 +204,8 @@ public class SchedulerSimulation {
             // Create a new process object with a unique name, burst time, and the defined time quantum
             Process process = new Process("P" + i, burstTime, timeQuantum);
             
+            process.setPriority(1 + random.nextInt(10)); // Feature 1
+           
             // Add the process to the ready queue and the map
             addProcessToQueue(process, processQueue, processMap);
         }
@@ -291,9 +298,11 @@ public class SchedulerSimulation {
         processMap.put(thread, process);
         
         // Print a message indicating the process has entered the ready queue
-        System.out.println(Colors.BLUE + "  ➕ " + Colors.BOLD + Colors.CYAN + process.getName() + 
-                          Colors.RESET + Colors.BLUE + " added to ready queue" + Colors.RESET + 
-                          " │ Burst time: " + Colors.YELLOW + process.getBurstTime() + "ms" + 
-                          Colors.RESET);
+        System.out.println(Colors.BLUE + "  ➕ " + Colors.BOLD + Colors.CYAN + process.getName() +
+                          Colors.RESET + Colors.BLUE + " added to ready queue" + Colors.RESET +
+                          " │ Burst time: " + Colors.YELLOW + process.getBurstTime() + "ms" +
+                          Colors.RESET + " │ Priority: " + Colors.BRIGHT_YELLOW +
+                          process.getPriority() + Colors.RESET);
     }
 }
+

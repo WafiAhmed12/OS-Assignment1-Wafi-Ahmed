@@ -29,11 +29,11 @@
 
 | Field | Your Answer |
 |-------|-------------|
-| **Full Name** | [Write your full name here] |
-| **Student ID** | [Write your student ID here] |
-| **University Email** | [yourid]@std.psau.edu.sa |
-| **GitHub Username** | [your-github-username] |
-| **Repository Link** | [Paste your repository link here] |
+| **Full Name** | Wafi Ahmed Alhobaishi |
+| **Student ID** | 445050266 |
+| **University Email** | 445050266@std.psau.edu.sa |
+| **GitHub Username** | WafiAhmed12 |
+| **Repository Link** | https://github.com/WafiAhmed12/OS-Assignment1-Wafi-Ahmed.git |
  
 ---
 
